@@ -1,0 +1,54 @@
+server:
+  port: 8081
+
+spring:
+  profiles:
+    active: qa
+
+---
+
+spring:
+  profiles: dev
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    password: root
+    url: jdbc:mysql://localhost:3306/Techmango
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+
+---
+
+spring:
+  profiles: qa
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    password: root
+    url: jdbc:mysql://localhost:3306/Techmango_qa
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+---
+
+spring:
+  profiles: prod
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    password: root
+    url: jdbc:mysql://localhost:3306/Techmango_prod
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
